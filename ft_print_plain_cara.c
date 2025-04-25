@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   print_plain_cara.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/25 12:31:39 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/25 16:54:51 by ehuybere         ###   ########.fr       */
+/*   Created: 2025/04/25 16:45:06 by ehuybere          #+#    #+#             */
+/*   Updated: 2025/04/25 16:46:39 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "printf.h"
 
-# include <stdarg.h>
-# include "libft/libft.h"
-
-typedef struct flags_s
+int	ft_print_plain_cara(int i, const char *format)
 {
-	int	hashtag;
-	int	space;
-	int	plus;
-}	flags_t
-
-int	ft_printf(const char *format, ...);
-
-#endif
+	if (format[i + 1] == '\0')
+		va_end(args);
+		return (-1);
+	ft_putchar_fd(format[i], 1);
+	return (1)
+}

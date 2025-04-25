@@ -6,7 +6,7 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/25 13:49:45 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/25 16:51:22 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,36 @@
 
 int	ft_printf(const char *format, ...)
 {
-	int		len;
+	int		len_printed;
+	int		temp_special_len;
 	int		i;
-	va_list	arg_list;
+	int		flag_found;
+	va_list	args;
 	
-	va_start(arg_list, format);
-
+	va_start(args, format);
 	len = 0;
 	i = 0;
+	if (!format || (format[i] == % && format[i + 1] == '\0'))
+		return (-1);
 	while(format[i] != '\0')
 	{
-		if (ft_isprint(format[i]) == 1)
+		if (format[i] != '%' && !flag_found)
 		{
-			ft_putchar_fd(format[i], 1);
-			len ++;
+			ft_print_plain_cara(&i, const char *format);
+			len_printed++;
 		}
+		if (format[i] == )
 		i++;
 	}
+	va_end(args)
 	return (len);
 }
 
 int	main(void)
 {
 	char	str[] = "YO Y.>/OYO";
+	int		nbr_printed;
 	
-	ft_printf(str);
+	nbr_printed = ft_printf(str);
 	return (0);
 }
