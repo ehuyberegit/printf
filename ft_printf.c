@@ -6,7 +6,7 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/25 13:34:41 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/25 13:49:45 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	ft_printf(const char *format, ...)
 	}
 	return (len);
 }
+
 int	main(void)
 {
 	char	str[] = "YO Y.>/OYO";
