@@ -6,37 +6,71 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/25 16:51:22 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/29 18:16:18 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
+int ft_format_dispatcher(char specifier, va_list args, t_flags *flags)
+{
+    /* Call the appropriate conversion function based on the specifier */
+}
+
+int	ft_parse_format(const char *format, int *i, t_flags *flags, va_list args)
+{
+	ft_init_flags(flags);
+	while(format[*i] && ft_is_flag(format[*i]))
+	{
+		ft_set_flag(format[*i], flags);
+		(*i)++;
+	}
+	if (ft_isdigit(format[*i]) || format[*i] == '*')
+		flags -> width = ft_parse_width(format, i, args);
+	if (format[*i] == '.')
+	{
+		flags -> dot = 1;
+		(*i)++;
+		flags -> precision = ft_parse_precision(format, i, args);
+	}
+	if (ft_strchr("cspdiuxX%",(const int)format[*i]) != NULL)
+		return (format[(*i)++]);
+	return (0);
+}
+
 int	ft_printf(const char *format, ...)
 {
 	int		len_printed;
-	int		temp_special_len;
 	int		i;
-	int		flag_found;
+	t_flags	flags;
 	va_list	args;
-	
-	va_start(args, format);
-	len = 0;
-	i = 0;
-	if (!format || (format[i] == % && format[i + 1] == '\0'))
+	char	specifier;
+
+	if (!format)
 		return (-1);
-	while(format[i] != '\0')
+	va_start(args, format);
+	len_printed = 0;
+	i = 0;
+	while (format[i])
 	{
-		if (format[i] != '%' && !flag_found)
+		if (format[i] == '%')
 		{
-			ft_print_plain_cara(&i, const char *format);
-			len_printed++;
+			i++;
+			if (format[i] == '\0')
+				return (-1);
+			specifier = ft_parse_format(format, &i, &flags, args);
+			if (specifier)
+				len_printed += ft_format_dispatcher(specifier, args, &flags);
 		}
-		if (format[i] == )
-		i++;
+		else
+		{
+			ft_putchar_fd(format[i], 1);
+			len_printed++;
+			i++;
+		}
 	}
-	va_end(args)
-	return (len);
+	va_end(args);
+	return (len_printed);
 }
 
 int	main(void)
