@@ -6,7 +6,7 @@
 /*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 12:31:39 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/30 15:13:46 by erwanhuyber      ###   ########.fr       */
+/*   Updated: 2025/04/30 18:42:36 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		ft_parse_precision(const char *format, int *i, va_list args);
 
 int		ft_print_char(va_list args, t_flags *flags);
 int		ft_print_string(va_list args, t_flags *flags);
+void	ft_pad(int len, char c);
 int		ft_print_void_pointer(va_list args, t_flags *flags);
 
 int		ft_print_decimal(va_list args, t_flags *flags);

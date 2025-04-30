@@ -6,63 +6,66 @@
 /*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:32:14 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/30 15:16:48 by erwanhuyber      ###   ########.fr       */
+/*   Updated: 2025/04/30 19:25:09 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
+void	ft_pad(int len, char c)
+{
+    while (len-- > 0)
+        write(1, &c, 1);
+}
+
 int	ft_print_char(va_list args, t_flags *flags)
 {
-	char	c;
-	int		i;
-	int		count;
+    char c;
+    int padding;
 	
 	c = (char)va_arg(args, int);
-	count = 1;
-	if (flags -> width > 1)
-	{
-		count = flags -> width;
-		if (flags -> minus == 1)
-		{
-			write(1, &c, 1);
-			i = 0;
-			while (i < (flags -> width) - 1)
-			{
-				write(1, " ", 1);
-				i++;
-			}
-		}
-		else
-		{
-			i = 0;
-			while (i < (flags -> width) - 1)
-			{
-				write(1, " ", 1);
-				i++;
-			}
-			write(1, &c, 1);
-		}
-	}
-	else
-    {
-        write(1, &c, 1);
-    }
-    return (count); 
+	padding = (flags->width > 1) ? flags->width - 1 : 0;
+    if (!flags->minus)
+        ft_pad(padding, ' ');
+    write(1, &c, 1);
+    if (flags->minus)
+        ft_pad(padding, ' '); 
+    return (1 + padding);
 }
 
 int ft_print_string(va_list args, t_flags *flags)
 {
 	char	*str;
 	int		str_len;
+	int		padding;
 	
-	str = va_arg(args, char*);
+	str = va_arg(args, char *);
 	if (!str)
 		str = "(null)";
-	str_len = ft_strlen(str); 
+	str_len = ft_strlen(str);
+	if (flags->dot && flags->precision < str_len)
+		str_len = flags->precision;
+	padding = (flags->width > str_len) ? flags->width - str_len : 0;
+	if (!flag->minus)
+		ft_pad(padding, ' ');
+	write(1, str, str_len);
+	if (flag->minus)
+		ft_pad(padding, ' ');
+	return (padding + str_len);
 }
 
-int ft_print_void_pointer(va_list args, t_flags *flags)
+int ft_print_percent(va_list args, t_flags *flags)
 {
+    (void)args;
+	int padding;
+	char pad_char;
 	
+    padding = (flags->width > 1) ? flags->width - 1 : 0;
+    pad_char = (flags->zero && !flags->minus) ? '0' : ' ';
+    if (!flags->minus)
+        ft_pad(padding, pad_char);
+    write(1, "%", 1);
+    if (flags->minus)
+        ft_pad(padding, ' ');
+    return (1 + padding);
 }
