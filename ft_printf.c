@@ -6,15 +6,37 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/29 18:16:18 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/30 10:16:54 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int ft_format_dispatcher(char specifier, va_list args, t_flags *flags)
+int	ft_format_dispatcher(char specifier, va_list args, t_flags *flags)
 {
-    /* Call the appropriate conversion function based on the specifier */
+	switch (specifier)
+	{
+		case 'c':
+			return (ft_print_char(args, flags));
+		case 's':
+			return (ft_print_string(args, flags));
+		case 'p':
+			return (ft_print_void_pointer(args, flags));
+		case 'd':
+			return (ft_print_decimal(args, flags));
+		case 'i':
+			return (ft_print_integer(args, flags));
+		case 'u':
+			return (ft_print_unsigned(args, flags));
+		case 'x':
+			return (ft_low_hexa(args, flags));
+		case 'X':
+			return (ft_up_hexa(args, flags));
+		case '%':
+			return (ft_print_percent(args, flags));
+		default:
+			return (-1);
+	}
 }
 
 int	ft_parse_format(const char *format, int *i, t_flags *flags, va_list args)
@@ -60,7 +82,7 @@ int	ft_printf(const char *format, ...)
 				return (-1);
 			specifier = ft_parse_format(format, &i, &flags, args);
 			if (specifier)
-				len_printed += ft_format_dispatcher(specifier, args, &flags);
+				len_printed += ft_format_dispatcher(specifier, args, flags);
 		}
 		else
 		{
@@ -71,13 +93,4 @@ int	ft_printf(const char *format, ...)
 	}
 	va_end(args);
 	return (len_printed);
-}
-
-int	main(void)
-{
-	char	str[] = "YO Y.>/OYO";
-	int		nbr_printed;
-	
-	nbr_printed = ft_printf(str);
-	return (0);
 }
