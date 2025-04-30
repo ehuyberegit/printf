@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/30 10:16:54 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:12:56 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_parse_format(const char *format, int *i, t_flags *flags, va_list args)
 		(*i)++;
 	}
 	if (ft_isdigit(format[*i]) || format[*i] == '*')
-		flags -> width = ft_parse_width(format, i, args);
+		flags -> width = ft_parse_width(format, i, flags, args);
 	if (format[*i] == '.')
 	{
 		flags -> dot = 1;
@@ -82,7 +82,7 @@ int	ft_printf(const char *format, ...)
 				return (-1);
 			specifier = ft_parse_format(format, &i, &flags, args);
 			if (specifier)
-				len_printed += ft_format_dispatcher(specifier, args, flags);
+				len_printed += ft_format_dispatcher(specifier, args, &flags);
 		}
 		else
 		{

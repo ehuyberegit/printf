@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 08:53:01 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/30 09:40:38 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/30 14:02:44 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-int
-main(void)
+int main(void)
 {
   printf("%%|\n");
   printf("\n");

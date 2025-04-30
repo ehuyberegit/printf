@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_format_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 15:09:05 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/04/30 11:35:18 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/04/30 15:12:18 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void ft_set_flag(char c, t_flags *flags)
 	}
 }
 
-int ft_parse_width(const char *format, int *i, va_list args)
+int ft_parse_width(const char *format, int *i, t_flags *flags, va_list args)
 {
 	int	width;
 
