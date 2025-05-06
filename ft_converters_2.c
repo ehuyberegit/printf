@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_converters_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:34:02 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/05/01 16:36:04 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/05/03 10:22:01 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	ft_print_uint(va_list args)
 	free(num_str);
 	return (len);
 }
-
-int	ft_u_int_len(int n)
+int	ft_u_long_len(unsigned long n)
 {
 	int	len;
 	
@@ -65,7 +64,7 @@ char	*ft_uitohex(unsigned int n, int uppercase)
 	char	*hexa;
 	int		len;
 	
-	len = ft_u_int_len(n);
+	len = ft_u_long_len(n);
 	hexa = (char *)calloc((len + 1), sizeof(char));
 	if (!hexa)
 		return (NULL);

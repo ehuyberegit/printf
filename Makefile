@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+         #
+#    By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/21 16:42:58 by ehuybere          #+#    #+#              #
-#    Updated: 2025/05/01 16:31:33 by ehuybere         ###   ########.fr        #
+#    Updated: 2025/05/03 10:33:43 by erwanhuyber      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fPIE
+CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
 
@@ -49,8 +49,4 @@ fclean: clean
 
 re: fclean all
 
-test: all
-	gcc -Wall -Wextra -Werror -no-pie ft_printf_simple_tester.c -L. -lftprintf -o tester
-	./tester
-
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re

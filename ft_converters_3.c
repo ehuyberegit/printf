@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_converters_3.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
+/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:34:22 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/05/01 16:35:57 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/05/03 10:21:54 by erwanhuyber      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_u_long_len(unsigned long n)
-{
-	int	len;
-	
-	len = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		n/=16;
-		len++;
-	}
-	return (len);
-	
-}
 
 char	*ft_ultohex(unsigned long n)
 {
