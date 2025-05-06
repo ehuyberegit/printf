@@ -6,7 +6,7 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:34:22 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/05/06 11:34:46 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/05/06 13:01:23 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_print_pointer(va_list args)
 	if (!num)
 	{
 		write(1, "(nil)", 5);
-		return (3);
+		return (5);
 	}
 	pointer = ft_ultohex(num);
 	if (!pointer)

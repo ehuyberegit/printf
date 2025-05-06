@@ -4,10 +4,10 @@
 
 int main(void)
 {
-    int	i = 10;
+    void 	*i = 0;
 
-    ft_printf("Your implementation: %i\n", i);
-    printf("Standard printf: %i\n", i);
+    ft_printf("Your implementation: %p %p\n", i, i);
+    printf("Standard printf: %p %p\n", i, i);
     
     return (0);
 }
