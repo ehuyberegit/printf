@@ -6,7 +6,7 @@
 /*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 16:48:11 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/05/01 16:35:39 by ehuybere         ###   ########.fr       */
+/*   Updated: 2025/05/06 11:05:47 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,24 @@
 
 int	ft_format_dispatcher(char specifier, va_list args)
 {
-	switch (specifier)
-	{
-		case 'c':
-			return (ft_print_char(args));
-		case 's':
-			return (ft_print_string(args));
-		case 'p':
-			return (ft_print_pointer(args));
-		case 'd':
-		case 'i':
-			return (ft_print_int(args));
-		case 'u':
-			return (ft_print_uint(args));
-		case 'x':
-			return (ft_print_hex(args, 0));
-		case 'X':
-			return (ft_print_hex(args, 1));
-		case '%':
-			return (ft_print_percent());
-		default:
-			return (-1);
-	}
+	if (specifier == 'c')
+		return (ft_print_char(args));
+	else if (specifier == 's')
+		return (ft_print_string(args));
+	else if (specifier == 'p')
+		return (ft_print_pointer(args));
+	else if (specifier == 'd' || specifier == 'i')
+		return (ft_print_int(args));
+	else if (specifier == 'u')
+		return (ft_print_uint(args));
+	else if (specifier == 'x')
+		return (ft_print_hex(args, 0));
+	else if (specifier == 'X')
+		return (ft_print_hex(args, 1));
+	else if (specifier == '%')
+		return (ft_print_percent());
+	else
+		return (-1);
 }
 
 int	ft_printf(const char *format, ...)

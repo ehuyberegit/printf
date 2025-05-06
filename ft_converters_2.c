@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_converters_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erwanhuyberechts <erwanhuyberechts@stud    +#+  +:+       +#+        */
+/*   By: ehuybere <ehuybere@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 17:34:02 by ehuybere          #+#    #+#             */
-/*   Updated: 2025/05/03 10:22:01 by erwanhuyber      ###   ########.fr       */
+/*   Updated: 2025/05/06 10:58:52 by ehuybere         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,27 +43,27 @@ int	ft_print_uint(va_list args)
 	free(num_str);
 	return (len);
 }
+
 int	ft_u_long_len(unsigned long n)
 {
 	int	len;
-	
+
 	len = 0;
 	if (n == 0)
 		return (1);
 	while (n > 0)
 	{
-		n/=16;
+		n /= 16;
 		len++;
 	}
 	return (len);
-	
 }
 
 char	*ft_uitohex(unsigned int n, int uppercase)
 {
 	char	*hexa;
 	int		len;
-	
+
 	len = ft_u_long_len(n);
 	hexa = (char *)calloc((len + 1), sizeof(char));
 	if (!hexa)
@@ -74,8 +74,10 @@ char	*ft_uitohex(unsigned int n, int uppercase)
 	{
 		if (9 >= (n % 16))
 			hexa[--len] = (n % 16) + '0';
+		else if (uppercase)
+			hexa[--len] = (n % 16) - 10 + 'A';
 		else
-			hexa[--len] = (n % 16) - 10 + (uppercase ? 'A' : 'a');
+			hexa[--len] = (n % 16) - 10 + 'a';
 		n /= 16;
 	}
 	return (hexa);
@@ -86,13 +88,13 @@ int	ft_print_hex(va_list args, int uppercase)
 	char	*hexa;
 	int		len;
 	int		num;
-	
+
 	num = va_arg(args, unsigned int);
 	hexa = ft_uitohex(num, uppercase);
 	if (!hexa)
 		return (0);
 	len = ft_strlen(hexa);
 	write(1, hexa, len);
-	free(hexa);
-	return(len);
+	free (hexa);
+	return (len);
 }
